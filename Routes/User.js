@@ -23,12 +23,7 @@ const jwtAuth = require("../Middleware/JWT")
 const UserController = require("../Controllers/UserController")
 
 // Routes
-router.post("/register", upload.fields([
-    { name: 'avatar', maxCount: 1 },
-    { name: 'document', maxCount: 1 },
-    { name: 'resume', maxCount: 1 },
-    { name: 'cnic', maxCount: 1 }
-]), UserController.register)
+router.post("/register", upload.any(), UserController.register)
 router.post("/login", UserController.login)
 router.get("/user", jwtAuth, UserController.userInfo)
 
